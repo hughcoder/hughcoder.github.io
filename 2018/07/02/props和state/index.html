@@ -1,0 +1,434 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>props和state使用场景 | Hugh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Hugh">
+    
+
+    
+    <meta name="description" content="props和state使用场景props介绍在reactnative当中，我们经常会对一个组件进行复用，或者在一个父组件中包裹多个子组件，这时候，我们会遇到二个问题，父、子组件如何完成通信呢？怎么对一个子组件进行重复使用？为了解决这2个问题，props因此而生。 如何通过prpos来进行复用子组件12345678910111213141516171819202122import React, &amp;#">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="props和state使用场景">
+<meta property="og:url" content="http://yoursite.com/2018/07/02/props和state/index.html">
+<meta property="og:site_name" content="Hugh">
+<meta property="og:description" content="props和state使用场景props介绍在reactnative当中，我们经常会对一个组件进行复用，或者在一个父组件中包裹多个子组件，这时候，我们会遇到二个问题，父、子组件如何完成通信呢？怎么对一个子组件进行重复使用？为了解决这2个问题，props因此而生。 如何通过prpos来进行复用子组件12345678910111213141516171819202122import React, &amp;#">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-02T08:42:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="props和state使用场景">
+<meta name="twitter:description" content="props和state使用场景props介绍在reactnative当中，我们经常会对一个组件进行复用，或者在一个父组件中包裹多个子组件，这时候，我们会遇到二个问题，父、子组件如何完成通信呢？怎么对一个子组件进行重复使用？为了解决这2个问题，props因此而生。 如何通过prpos来进行复用子组件12345678910111213141516171819202122import React, &amp;#">
+
+    
+    <link rel="alternative" href="atom.xml" title="Hugh" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/terminallogo.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/terminal.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/terminal.png">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hugh">Hugh</a></h1>
+				<h2 class="blog-motto">keep on learing ，keep on thinking</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/07/02/props和state/" title="props和state使用场景" itemprop="url">props和state使用场景</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Hugh" target="_blank" itemprop="author">Hugh</a>
+		
+  <p class="article-time">
+    <time datetime="2018-07-02T08:42:00.000Z" itemprop="datePublished"> Published 2018-07-02</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#props和state使用场景"><span class="toc-number">1.</span> <span class="toc-text">props和state使用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#props介绍"><span class="toc-number">1.1.</span> <span class="toc-text">props介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#如何通过prpos来进行复用子组件"><span class="toc-number">1.1.1.</span> <span class="toc-text">如何通过prpos来进行复用子组件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#state介绍"><span class="toc-number">1.2.</span> <span class="toc-text">state介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">1.3.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="props和state使用场景"><a href="#props和state使用场景" class="headerlink" title="props和state使用场景"></a>props和state使用场景</h2><h3 id="props介绍"><a href="#props介绍" class="headerlink" title="props介绍"></a>props介绍</h3><p>在reactnative当中，我们经常会对一个组件进行复用，或者在一个父组件中包裹多个子组件，这时候，我们会遇到二个问题，父、子组件如何完成通信呢？怎么对一个子组件进行重复使用？为了解决这2个问题，props因此而生。</p>
+<h4 id="如何通过prpos来进行复用子组件"><a href="#如何通过prpos来进行复用子组件" class="headerlink" title="如何通过prpos来进行复用子组件"></a>如何通过prpos来进行复用子组件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &apos;react&apos;;</span><br><span class="line">import &#123; Text, View &#125; from &apos;react-native&apos;;</span><br><span class="line"></span><br><span class="line">class Greeting extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;Text&gt;Hello &#123;this.props.name&#125;!&lt;/Text&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default class LotsOfGreetings extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;View style=&#123;&#123;alignItems: &apos;center&apos;&#125;&#125;&gt;</span><br><span class="line">        &lt;Greeting name=&apos;Rexxar&apos; /&gt;</span><br><span class="line">        &lt;Greeting name=&apos;Jaina&apos; /&gt;</span><br><span class="line">        &lt;Greeting name=&apos;Valeera&apos; /&gt;</span><br><span class="line">      &lt;/View&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  首先看这个官方文档给的案例，我们在Greeting组件中将name作为一个属性来定制，这样可以复用这一组件来制作各种不同的“问候语”。通过传给不同的props的值来对同一组件有不同的变化。</p>
+<h3 id="state介绍"><a href="#state介绍" class="headerlink" title="state介绍"></a>state介绍</h3><p>上文讲了props，看完了上篇，其实你会感觉到props讲的都是父组件对子组件的控制，那么还需要来对自身变化进行判断，那就是state。</p>
+<p>我们使用两种数据来控制一个组件：props和state。props是在父组件中指定，而且一经指定，在被指定的组件的生命周期中则不再改变。 对于需要改变的数据，我们需要使用state。</p>
+<p>一般来说，你需要在constructor中初始化state，然后在需要修改时调用setState方法。</p>
+<p>以下通过一个开关来控制背景变化的demo来讲解</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &apos;react&apos;;</span><br><span class="line">import &#123; View, StyleSheet, TouchableOpacity, &#125; from &apos;react-native&apos;;</span><br><span class="line"></span><br><span class="line">export default class HomeView extends Component &#123;</span><br><span class="line"></span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state = &#123; isPoweron: false &#125;;</span><br><span class="line"></span><br><span class="line">    this.onPowerClick = this._onPowerClick.bind(this);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  _onPowerClick() &#123;</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      isPoweron: !this.state.isPoweron</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;View style=&#123;this.state.isPoweron ? styles.Poweron : styles.Poweroff&#125;&gt;</span><br><span class="line">        &lt;TouchableOpacity</span><br><span class="line">          style=&#123;styles.btnstyle&#125;</span><br><span class="line">          onPress=&#123;this.onPowerClick&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">      &lt;/View&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const styles = StyleSheet.create(&#123;</span><br><span class="line">  Poweron: &#123;</span><br><span class="line">    flex: 1,</span><br><span class="line">    backgroundColor: &apos;white&apos;,</span><br><span class="line">    justifyContent: &apos;center&apos;,</span><br><span class="line">    alignItems: &apos;center&apos;,</span><br><span class="line">  &#125;,</span><br><span class="line">  Poweroff: &#123;</span><br><span class="line">    flex: 1,</span><br><span class="line">    backgroundColor: &apos;black&apos;,</span><br><span class="line">    justifyContent: &apos;center&apos;,</span><br><span class="line">    alignItems: &apos;center&apos;,</span><br><span class="line">  &#125;,</span><br><span class="line">  btnstyle: &#123;</span><br><span class="line">    width: 40,</span><br><span class="line">    height: 40,</span><br><span class="line">    backgroundColor: &apos;red&apos;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这个demo通过改变状态来改变背景的变化，state的使用还是很简单的。针对不同的业务需求制定不同的state，同样的state不仅支持bool型，还支持number类型等等。</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>通过上文的浏览，想必大家都已经有模糊的概念了,乘热打铁大家来对看过的知识进行下吸收。</p>
+<p>state的主要作用是用于组件保存、控制、修改自己的可变状态。state在组件的constructor中进行初始化，可以被自身修改，而外部不能访问也不能修改。你可以认为state是一个局部的、只能被自身控制的数据源。我们只需要在相应操作下使用this.setstate方法进行更新，setState会导致组件重新渲染（在下一篇文章中会介绍react-native的生命周期）。</p>
+<p>props的主要作用是让使用该组件的父组件可以传入参数来配置子组件。它是外部传进来的配置参数，组件内部无法控制也无法渲染。除非外部组件主动传入新的props（通过redux也算外部传值）。</p>
+<p>state和props紧密相连。一个组件可以使用外部传入的 props 来初始化自己的 state。但是它们的职责其实非常明晰分明：<br><strong>state 是让组件控制自己的状态，props 是让外部对组件自己进行配置</strong></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/react-native/">react-native</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/javascript/">javascript</a>
+  </div>
+
+</div>
+
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2018/06/29/synchronized/"  title="Java线程间交互同步———— synchronized">
+ <span>Java线程间交互同步———— synchronized
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+<div id="authorInfo">
+	
+		<div class="author-img"></div>		
+	
+	<div class="social-info" class="clearfix">
+		
+		
+		<a href="https://github.com/hughcoder" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:849978368@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+
+	</div>
+</div>
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Android/" title="Android">Android<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/java/" title="java">java<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react-native/" title="react-native">react-native<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/web前端/" title="web前端">web前端<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/javascript/" title="javascript">javascript<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/synchronized/" title="synchronized">synchronized<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架构模式/" title="架构模式">架构模式<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+		
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/hsihohuang/kiddochan" target="_blank" title="Kiddochan">Kiddochan</a> © 2018 
+		
+		<a href="/about" target="_blank" title="Hugh">Hugh</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
