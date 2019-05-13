@@ -1,0 +1,476 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Flutter 调用Android接口 | Hugh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Hugh">
+    
+
+    
+    <meta name="description" content="Flutter 调用Android接口1.平台通道应用的Flutter部分通过平台通道（platform channel）将消息发送到其应用程序的所在的宿主（iOS或Android）。 宿主监听的平台通道，并接收该消息。然后它会调用特定于该平台的API（使用原生编程语言） - 并将响应发送回客户端，即应用程序的Flutter部分。  从图中我们能清楚的看到两端的交互(Flutter与App)通过M">
+<meta name="keywords" content="dart">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter 调用Android接口">
+<meta property="og:url" content="http://yoursite.com/2018/12/25/调用Android接口/index.html">
+<meta property="og:site_name" content="Hugh">
+<meta property="og:description" content="Flutter 调用Android接口1.平台通道应用的Flutter部分通过平台通道（platform channel）将消息发送到其应用程序的所在的宿主（iOS或Android）。 宿主监听的平台通道，并接收该消息。然后它会调用特定于该平台的API（使用原生编程语言） - 并将响应发送回客户端，即应用程序的Flutter部分。  从图中我们能清楚的看到两端的交互(Flutter与App)通过M">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://wx3.sinaimg.cn/mw690/0060lm7Tly1fqi6oy9kj6j30g40hzmxi.jpg">
+<meta property="og:updated_time" content="2019-05-13T02:45:30.485Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flutter 调用Android接口">
+<meta name="twitter:description" content="Flutter 调用Android接口1.平台通道应用的Flutter部分通过平台通道（platform channel）将消息发送到其应用程序的所在的宿主（iOS或Android）。 宿主监听的平台通道，并接收该消息。然后它会调用特定于该平台的API（使用原生编程语言） - 并将响应发送回客户端，即应用程序的Flutter部分。  从图中我们能清楚的看到两端的交互(Flutter与App)通过M">
+<meta name="twitter:image" content="http://wx3.sinaimg.cn/mw690/0060lm7Tly1fqi6oy9kj6j30g40hzmxi.jpg">
+
+    
+    <link rel="alternative" href="atom.xml" title="Hugh" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/terminallogo.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/terminal.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/terminal.png">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hugh">Hugh</a></h1>
+				<h2 class="blog-motto">keep on learing ，keep on thinking</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/12/25/调用Android接口/" title="Flutter 调用Android接口" itemprop="url">Flutter 调用Android接口</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Hugh" target="_blank" itemprop="author">Hugh</a>
+		
+  <p class="article-time">
+    <time datetime="2018-12-25T09:57:18.425Z" itemprop="datePublished"> Published 2018-12-25</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Flutter-调用Android接口"><span class="toc-number">1.</span> <span class="toc-text">Flutter 调用Android接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-平台通道"><span class="toc-number">1.1.</span> <span class="toc-text">1.平台通道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-实践篇"><span class="toc-number">1.2.</span> <span class="toc-text">2.实践篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android部分"><span class="toc-number">1.2.1.</span> <span class="toc-text">Android部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flutter部分调用"><span class="toc-number">1.2.2.</span> <span class="toc-text">Flutter部分调用</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="Flutter-调用Android接口"><a href="#Flutter-调用Android接口" class="headerlink" title="Flutter 调用Android接口"></a>Flutter 调用Android接口</h1><h2 id="1-平台通道"><a href="#1-平台通道" class="headerlink" title="1.平台通道"></a>1.平台通道</h2><p>应用的Flutter部分通过平台通道（platform channel）将消息发送到其应用程序的所在的宿主（iOS或Android）。</p>
+<p>宿主监听的平台通道，并接收该消息。然后它会调用特定于该平台的API（使用原生编程语言） - 并将响应发送回客户端，即应用程序的Flutter部分。</p>
+<p><img src="http://wx3.sinaimg.cn/mw690/0060lm7Tly1fqi6oy9kj6j30g40hzmxi.jpg" alt="官方文档的图"></p>
+<p>从图中我们能清楚的看到两端的交互(Flutter与App)通过MethodChannel方法来完成<br>事实上,Flutter定义了3种不同类型的Channel,他们分别是:</p>
+<p><strong>BasicMessageChannel：用于传递字符串和半结构化的信息</strong><br><strong>MethodChannel：用于传递方法调用（method invocation）</strong><br><strong>EventChannel: 用于数据流（event streams）的通信。</strong></p>
+<h2 id="2-实践篇"><a href="#2-实践篇" class="headerlink" title="2.实践篇"></a>2.实践篇</h2><h3 id="Android部分"><a href="#Android部分" class="headerlink" title="Android部分"></a>Android部分</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">// 创建相应的plugin插件  比如调用TuyaSmartSDk的login</span><br><span class="line">object ApiPlugin &#123;</span><br><span class="line"></span><br><span class="line">    /** Channel名称  **/</span><br><span class="line">    private const val ChannelName = &quot;com.ty.test/api&quot;</span><br><span class="line">    public const final val TAG = &quot;AAAA&quot;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 注册API插件</span><br><span class="line">     * @param context 上下文对象</span><br><span class="line">     * @param messenger 数据信息交流对象</span><br><span class="line">     */</span><br><span class="line">    @JvmStatic</span><br><span class="line">    fun register(context: Context, messenger: BinaryMessenger) = MethodChannel(messenger, ChannelName).setMethodCallHandler &#123; methodCall, result -&gt;</span><br><span class="line">        L.e(&quot;APi methodCall.method&quot;, methodCall.method)</span><br><span class="line">        when (methodCall.method) &#123;</span><br><span class="line">            &quot;loginRequest&quot; -&gt; loginRequest(context, result, methodCall) //跳回native的页面</span><br><span class="line">        &#125;</span><br><span class="line">//        result.success(null) //没有返回值，所以直接返回为null</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    private fun loginRequest(context: Context, result: MethodChannel.Result, methodCall: MethodCall) &#123;</span><br><span class="line">        L.e(&quot;login 请求&quot;, &quot;-----&gt;&quot;)</span><br><span class="line">        val mCountryCode = methodCall.argument&lt;String&gt;(&quot;mCountryCode&quot;) + &quot;&quot;</span><br><span class="line">        val userName = methodCall.argument&lt;String&gt;(&quot;userName&quot;) + &quot;&quot;</span><br><span class="line">        val password = methodCall.argument&lt;String&gt;(&quot;password&quot;) + &quot;&quot;</span><br><span class="line">        TuyaHomeSdk.getUserInstance().loginWithPhonePassword(mCountryCode, userName, password, getLoginCallback(result))</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fun getLoginCallback(result: MethodChannel.Result): ILoginCallback? &#123;</span><br><span class="line">        val callback = object : ILoginCallback &#123;</span><br><span class="line">            override fun onSuccess(user: User?) &#123;</span><br><span class="line">                result.success(JSON.toJSONString(user))</span><br><span class="line">            &#125;</span><br><span class="line">            override fun onError(code: String?, error: String?) &#123;</span><br><span class="line">                L.e(TAG,error)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return callback</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 我们在相应的Activity里去调用</span><br><span class="line">public class TYFlutterActivity extends Activity implements PluginRegistry, FlutterActivityDelegate.ViewFactory, FlutterView.Provider, LifecycleOwner &#123;</span><br><span class="line"></span><br><span class="line">.....</span><br><span class="line"></span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line"> ...</span><br><span class="line">       //插件必须要和相应的flutterView绑定</span><br><span class="line">        ApiPlugin.register(this,this.getFlutterView());</span><br><span class="line">        GeneratedPluginRegistrant.registerWith(this);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Flutter部分调用"><a href="#Flutter部分调用" class="headerlink" title="Flutter部分调用"></a>Flutter部分调用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">static const MethodChannel methodChannel = MethodChannel(&apos;com.ty.test/api&apos;);</span><br><span class="line"></span><br><span class="line"> Future&lt;void&gt; _Login() async &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">      final String result = await methodChannel.invokeMethod(&apos;loginRequest&apos;,&#123;&apos;mCountryCode&apos;:&apos;86&apos;,&apos;userName&apos;:&apos;17826859067&apos;,&apos;password&apos;:&apos;63621674ww&apos;&#125;);</span><br><span class="line">       print(&quot;------------------------&quot;+result);</span><br><span class="line"></span><br><span class="line">    &#125; on PlatformException &#123;</span><br><span class="line">     // toast(&apos;&apos;) 失败的提示</span><br><span class="line">    &#125;</span><br><span class="line">   // 成功后执行相应操作</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>参考：<a href="https://juejin.im/post/5b84ff6a6fb9a019f47d1cc9" target="_blank" rel="noopener">https://juejin.im/post/5b84ff6a6fb9a019f47d1cc9</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Flutter/">Flutter</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/dart/">dart</a>
+  </div>
+
+</div>
+
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2019/01/03/one/" title="Flutter简介">
+  <span>
+  Flutter简介</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2018/12/25/在已有Android接入Flutter/"  title="在已有Android项目当中开发Flutter">
+ <span>在已有Android项目当中开发Flutter
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+<div id="authorInfo">
+	
+		<div class="author-img"></div>		
+	
+	<div class="social-info" class="clearfix">
+		
+		
+		<a href="https://github.com/hughcoder" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:849978368@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+
+	</div>
+</div>
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Android/" title="Android">Android<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Flutter/" title="Flutter">Flutter<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/java/" title="java">java<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react-native/" title="react-native">react-native<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/dart/" title="dart">dart<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/flutter/" title="flutter">flutter<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/javascript/" title="javascript">javascript<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/synchronized/" title="synchronized">synchronized<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/源码/" title="源码">源码<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架构模式/" title="架构模式">架构模式<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+		
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/hsihohuang/kiddochan" target="_blank" title="Kiddochan">Kiddochan</a> © 2019 
+		
+		<a href="/about" target="_blank" title="Hugh">Hugh</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'hughcoder';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

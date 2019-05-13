@@ -11,17 +11,16 @@
     
 
     
-    <meta name="description" content="Flutter 开发">
-<meta property="og:type" content="article">
+    <meta name="description" content="keep on learing ，keep on thinking">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Hugh">
-<meta property="og:url" content="http://yoursite.com/2018/08/31/Flutter 开发/index.html">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Hugh">
-<meta property="og:description" content="Flutter 开发">
+<meta property="og:description" content="keep on learing ，keep on thinking">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-31T08:33:30.876Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hugh">
-<meta name="twitter:description" content="Flutter 开发">
+<meta name="twitter:description" content="keep on learing ，keep on thinking">
 
     
     <link rel="alternative" href="atom.xml" title="Hugh" type="application/atom+xml">
@@ -75,75 +74,58 @@
 </div>
     </header>
     <div id="container">
-      <div id="main" class="post" itemscope itemprop="blogPost">
+      <div id="main">
+
   
-	<article itemprop="articleBody"> 
-		<header class="article-info clearfix">
-  <h1 itemprop="name">
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2018/06/29/synchronized/" title="Java线程间交互同步———— synchronized" itemprop="url">
+  
+    <h1 itemprop="name">Java线程间交互同步———— synchronized</h1>
     
-      <a href="/2018/08/31/Flutter 开发/" title="" itemprop="url"></a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Hugh" target="_blank" itemprop="author">Hugh</a>
-		
-  <p class="article-time">
-    <time datetime="2018-08-31T08:33:30.876Z" itemprop="datePublished"> Published 2018-08-31</time>
+     
+           <p itemprop="description" >在看本篇文章之前，我们要写思考以下问题。
+是否理解synchronized的含义、明确synchronized关键字修饰普通方法、静态方法和代码块时锁对象的差异。（篇尾会将答案贴出来）
+要是还有疑虑的话，这篇文章希望帮你很好的理清。
+一、基础知识我们知道，在多线程共享资源时，由于</p>
+        
     
-  </p>
-</header>
-	<div class="article-content">
-		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Flutter-开发"><span class="toc-number">1.</span> <span class="toc-text">Flutter 开发</span></a></li></ol>
-		
-		</div>
-		
-		<h3 id="Flutter-开发"><a href="#Flutter-开发" class="headerlink" title="Flutter 开发"></a>Flutter 开发</h3>  
-	</div>
-		<footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-</footer>
-
-   	       
-	</article>
-	
-<nav class="article-nav clearfix">
- 
- <div class="prev" >
- <a href="/2018/10/24/Flutter2/" title="">
-  <span>
-  (no title)</span>
-</a>
-</div>
-
-
-<div class="next">
-<a href="/2018/07/27/windowManager源码/"  title="WindowManager源码阅读">
- <span>WindowManager源码阅读
-</span>
-</a>
-</div>
-
-</nav>
-
-	
-
-<section id="comments" class="comment">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
+    <time datetime="2018-06-29T09:30:39.000Z" itemprop="datePublished">2018-06-29</time>
+  </a>
 </section>
 
-</div>  
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2018/06/26/深入浅出MVP/" title="深入浅出MVP" itemprop="url">
+  
+    <h1 itemprop="name">深入浅出MVP</h1>
+    
+     
+           <p itemprop="description" >现在MVP模式已经随处可见了，所以还需要好好理一理
+MVP模式介绍MVP全称Model View Presenter。MVP能够有效的降低View的复杂性，避免业务逻辑被塞进View中，防止View的代码变得冗杂。MVP模式会解除View与Model的耦合，同时又带来了良好的扩展</p>
+        
+    
+    <time datetime="2018-06-26T02:02:16.000Z" itemprop="datePublished">2018-06-26</time>
+  </a>
+</section>
+
+
+
+
+
+
+
+  <nav id="page-nav" class="clearfix unexpand">
+    <a class="extend prev" rel="prev" href="/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
+</div>
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
 <div id="asidepart">
@@ -183,6 +165,10 @@
 		  
 		
 		  
+			<li><a href="/categories/Flutter/" title="Flutter">Flutter<sup>8</sup></a></li>
+		  
+		
+		  
 			<li><a href="/categories/java/" title="java">java<sup>1</sup></a></li>
 		  
 		
@@ -200,6 +186,14 @@
 		<ul class="clearfix">
 		
 			
+				<li><a href="/tags/dart/" title="dart">dart<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/flutter/" title="flutter">flutter<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/javascript/" title="javascript">javascript<sup>1</sup></a></li>
 			
 		
@@ -208,11 +202,11 @@
 			
 		
 			
-				<li><a href="/tags/架构模式/" title="架构模式">架构模式<sup>1</sup></a></li>
+				<li><a href="/tags/源码/" title="源码">源码<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/源码/" title="源码">源码<sup>1</sup></a></li>
+				<li><a href="/tags/架构模式/" title="架构模式">架构模式<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -285,104 +279,9 @@ $(document).ready(function(){
 });
 </script>
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var ai = $('.article-content>iframe'),
-      ae = $('.article-content>embed'),
-      t  = $('#toc'),
-      ta = $('#toc.toc-aside'),
-      o  = $('.openaside'),
-      c  = $('.closeaside');
-  if(ai.length>0){
-    ai.wrap('<div class="video-container" />');
-  };
-  if(ae.length>0){
-   ae.wrap('<div class="video-container" />');
-  };
-  c.click(function(){
-    ta.css('display', 'block').addClass('fadeIn');
-  });
-  o.click(function(){
-    ta.css('display', 'none');
-  });
-  $(window).scroll(function(){
-    ta.css("top",Math.max(140,320-$(this).scrollTop()));
-  });
-});
-</script>
-
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var $this = $('.share'),
-      url = $this.attr('data-url'),
-      encodedUrl = encodeURIComponent(url),
-      title = $this.attr('data-title'),
-      tsina = $this.attr('data-tsina'),
-      description = $this.attr('description');
-  var html = [
-  '<div class="hoverqrcode clearfix"></div>',
-  '<a class="overlay" id="qrcode"></a>',
-  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
-  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
-  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
-  '<span title="Share to"></span>'
-  ].join('');
-  $this.append(html);
-
-  $('.hoverqrcode').hide();
-
-  var myWidth = 0;
-  function updatehoverqrcode(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-    var qrsize = myWidth > 1024 ? 200:100;
-    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
-    var p = $('.article-share-qrcode').position();
-    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
-                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
-                          .qrcode(options);
-  };
-  $(window).resize(function(){
-    $('.hoverqrcode').hide();
-  });
-  $('.article-share-qrcode').click(function(){
-    updatehoverqrcode();
-    $('.hoverqrcode').toggle();
-  });
-  $('.article-share-qrcode').hover(function(){}, function(){
-      $('.hoverqrcode').hide();
-  });
-});   
-</script>
 
 
 
-
-<script type="text/javascript">
-
-var disqus_shortname = 'hughcoder';
-
-(function(){
-  var dsq = document.createElement('script');
-  dsq.type = 'text/javascript';
-  dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-}());
-(function(){
-  var dsq = document.createElement('script');
-  dsq.type = 'text/javascript';
-  dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-}());
-</script>
 
 
 
@@ -440,4 +339,4 @@ $(document).ready(function(){
 <!-- Tiny_search End -->
 
   </body>
-</html>
+ </html>

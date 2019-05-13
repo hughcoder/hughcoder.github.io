@@ -1,0 +1,528 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Flutter 应用--Widget | Hugh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Hugh">
+    
+
+    
+    <meta name="description" content="Flutter 应用–Widget在Flutter的世界里，UI控件就是所谓的widget，通过组合不同的widget来实现我们的用户交互界面。 widget分为两种：StatelessWidget和StatefulWidget,我们先说说这个的区别 StatelessWidget：称为无状态组件，内部不保存状态界面不会发生改变。 StatefulWidget：称为有状态组件，内部保存状态界面会发">
+<meta name="keywords" content="flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter 应用--Widget">
+<meta property="og:url" content="http://yoursite.com/2019/01/08/Flutter应用Widget/index.html">
+<meta property="og:site_name" content="Hugh">
+<meta property="og:description" content="Flutter 应用–Widget在Flutter的世界里，UI控件就是所谓的widget，通过组合不同的widget来实现我们的用户交互界面。 widget分为两种：StatelessWidget和StatefulWidget,我们先说说这个的区别 StatelessWidget：称为无状态组件，内部不保存状态界面不会发生改变。 StatefulWidget：称为有状态组件，内部保存状态界面会发">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/01/08/Flutter应用Widget/images/text.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/08/Flutter应用Widget/images/textField.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/08/Flutter应用Widget/images/button.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/08/Flutter应用Widget/images/simpleDialog.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/08/Flutter应用Widget/images/alertDialog.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/08/Flutter应用Widget/images/imageAssets.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/08/Flutter应用Widget/images/listView.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/08/Flutter应用Widget/images/listView2.png">
+<meta property="og:updated_time" content="2019-05-13T02:24:03.763Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flutter 应用--Widget">
+<meta name="twitter:description" content="Flutter 应用–Widget在Flutter的世界里，UI控件就是所谓的widget，通过组合不同的widget来实现我们的用户交互界面。 widget分为两种：StatelessWidget和StatefulWidget,我们先说说这个的区别 StatelessWidget：称为无状态组件，内部不保存状态界面不会发生改变。 StatefulWidget：称为有状态组件，内部保存状态界面会发">
+<meta name="twitter:image" content="http://yoursite.com/2019/01/08/Flutter应用Widget/images/text.png">
+
+    
+    <link rel="alternative" href="atom.xml" title="Hugh" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/terminallogo.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/terminal.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/terminal.png">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hugh">Hugh</a></h1>
+				<h2 class="blog-motto">keep on learing ，keep on thinking</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/01/08/Flutter应用Widget/" title="Flutter 应用--Widget" itemprop="url">Flutter 应用--Widget</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Hugh" target="_blank" itemprop="author">Hugh</a>
+		
+  <p class="article-time">
+    <time datetime="2019-01-08T10:00:09.553Z" itemprop="datePublished"> Published 2019-01-08</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Flutter-应用–Widget"><span class="toc-number">1.</span> <span class="toc-text">Flutter 应用–Widget</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Flutter常用Widgets"><span class="toc-number">1.1.</span> <span class="toc-text">Flutter常用Widgets</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Text组件"><span class="toc-number">1.2.</span> <span class="toc-text">Text组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TexField组件"><span class="toc-number">1.3.</span> <span class="toc-text">TexField组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按钮（Button）组件"><span class="toc-number">1.4.</span> <span class="toc-text">按钮（Button）组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dialog组件"><span class="toc-number">1.5.</span> <span class="toc-text">Dialog组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Image组件"><span class="toc-number">1.6.</span> <span class="toc-text">Image组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#加载本地图片"><span class="toc-number">1.6.1.</span> <span class="toc-text">加载本地图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载网络图片"><span class="toc-number">1.6.2.</span> <span class="toc-text">加载网络图片</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ListView组件"><span class="toc-number">1.7.</span> <span class="toc-text">ListView组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-number">1.8.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="Flutter-应用–Widget"><a href="#Flutter-应用–Widget" class="headerlink" title="Flutter 应用–Widget"></a>Flutter 应用–Widget</h1><p>在Flutter的世界里，UI控件就是所谓的widget，通过组合不同的widget来实现我们的用户交互界面。</p>
+<p><strong>widget</strong>分为两种：<strong>StatelessWidget</strong>和<strong>StatefulWidget</strong>,我们先说说这个的区别</p>
+<p><strong>StatelessWidget</strong>：称为无状态组件，内部不保存状态界面不会发生改变。</p>
+<p><strong>StatefulWidget</strong>：称为有状态组件，内部保存状态界面会发生改变。</p>
+<h2 id="Flutter常用Widgets"><a href="#Flutter常用Widgets" class="headerlink" title="Flutter常用Widgets"></a>Flutter常用Widgets</h2><p>在移动开发中，我们经常会跟按钮、文本输入框、图片等打交道，Flutter中也不例外，使用Flutter开发的App，界面上的每一个UI元素都是一个Widget，通过不同的Widget组合形成一整个页面。除了按钮、输入框、图片等Widget外，Flutter还给我们提供了很多功能强大，界面美观的Widget，看下面一段代码：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.dart文件内容</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'package:flutter/material.dart'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() =&gt; runApp(<span class="keyword">new</span> TuyaApp());</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TuyaApp</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> MaterialApp(</span><br><span class="line">      title: <span class="string">'Flutter Demo'</span>,</span><br><span class="line">      theme: <span class="keyword">new</span> ThemeData(</span><br><span class="line">        primarySwatch: Colors.blue,</span><br><span class="line">      ),</span><br><span class="line">      home: <span class="keyword">new</span> Scaffold(</span><br><span class="line">        appBar: <span class="keyword">new</span> AppBar(</span><br><span class="line">            title: <span class="keyword">new</span> Text(<span class="string">'Tuya Flutter Demo'</span>)</span><br><span class="line">        ),</span><br><span class="line">        body: <span class="keyword">new</span> Center(</span><br><span class="line">          child: <span class="keyword">new</span> Text(<span class="string">'Hello Tuya'</span>),</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上面的代码是一个最简单的<strong>Hello Tuya</strong>程序，<code>TuyaApp</code>是我们自定义的一个类，它继承自StatelessWidget，代表它是一个无状态的组件，UI不会发生改变。<code>build</code>方法是父类的一个方法，被<code>TuyaApp</code>类重写了，继承自StatelessWidget的类必须实现<code>TuyaApp</code>方法并返回一个Widget对象。所以在上面的代码中，<code>MaterialApp</code>也是一个Widget，如果你用AndroidStudio查看源码，会发现MaterialApp的参数<code>home</code>也是一个Widget对象，所以上面的Scaffold也是一个Widget。</p>
+<h2 id="Text组件"><a href="#Text组件" class="headerlink" title="Text组件"></a>Text组件</h2><p>Text组件是非常常用的组件，任何需要显示文本的地方基本都会用到。通过查看Text类的源码，可以发现Text是一个无状态的组件，下面的代码演示了如何修改Text组件的字号、颜色，给字体加粗、设置下划线、设置斜体等：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'package:flutter/material.dart'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() =&gt; runApp(<span class="keyword">new</span> MaterialApp(</span><br><span class="line">  title: <span class="string">"Text Demo"</span>,</span><br><span class="line">  home: <span class="keyword">new</span> Scaffold(</span><br><span class="line">    appBar: <span class="keyword">new</span> AppBar(</span><br><span class="line">      title: <span class="keyword">new</span> Text(<span class="string">"Text Demo"</span>),</span><br><span class="line">    ),</span><br><span class="line">    body: <span class="keyword">new</span> Center(</span><br><span class="line">      child: <span class="keyword">new</span> Text(</span><br><span class="line">        <span class="string">"Hello Flutter"</span>,</span><br><span class="line">        style: <span class="keyword">new</span> TextStyle(</span><br><span class="line">          color: Colors.red, <span class="comment">// 或者用这种写法：const Color(0xFF6699FF) 必须使用AARRGGBB</span></span><br><span class="line">          fontSize: <span class="number">20.0</span>, <span class="comment">// 字号</span></span><br><span class="line">          fontWeight: FontWeight.bold, <span class="comment">// 字体加粗</span></span><br><span class="line">          fontStyle: FontStyle.italic, <span class="comment">// 斜体</span></span><br><span class="line">          decoration: <span class="keyword">new</span> TextDecoration.combine([TextDecoration.underline]) <span class="comment">// 文本加下划线</span></span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    ),</span><br><span class="line">  ),</span><br><span class="line">));</span><br></pre></td></tr></table></figure>
+<p>运行效果如下：</p>
+<p><img src="./images/text.png" alt="text"></p>
+<h2 id="TexField组件"><a href="#TexField组件" class="headerlink" title="TexField组件"></a>TexField组件</h2><p>TextFiled组件用于文本的输入，示例代码如下：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'package:flutter/material.dart'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() =&gt; runApp(<span class="keyword">new</span> TuyaApp());</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TuyaApp</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> MaterialApp(</span><br><span class="line">      title: <span class="string">"Test"</span>,</span><br><span class="line">      home: <span class="keyword">new</span> Scaffold(</span><br><span class="line">        appBar: <span class="keyword">new</span> AppBar(</span><br><span class="line">          title: <span class="keyword">new</span> Text(<span class="string">"Test"</span>)</span><br><span class="line">        ),</span><br><span class="line">        body: <span class="keyword">new</span> Padding(</span><br><span class="line">          padding: <span class="keyword">const</span> EdgeInsets.all(<span class="number">8.0</span>),</span><br><span class="line">          child: <span class="keyword">new</span> TextField(</span><br><span class="line">            maxLines: <span class="number">8</span>, <span class="comment">// 设置输入框显示的最大行数（不是可输入的最大行数）</span></span><br><span class="line">            maxLength: <span class="number">30</span>, <span class="comment">// 设置输入框中最多可输入的字符数</span></span><br><span class="line">            decoration: <span class="keyword">new</span> InputDecoration( <span class="comment">// 给输入框添加样式</span></span><br><span class="line">              hintText: <span class="string">"Input something..."</span>, <span class="comment">// 输入框中placeholder文本</span></span><br><span class="line">              border: <span class="keyword">new</span> OutlineInputBorder( <span class="comment">// 输入框的边框</span></span><br><span class="line">                borderRadius: <span class="keyword">const</span> BorderRadius.all(Radius.circular(<span class="number">1.0</span>))</span><br><span class="line">              )</span><br><span class="line">            ),</span><br><span class="line">          )</span><br><span class="line">        )</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行界面如下图：</p>
+<p><img src="./images/textField.png" alt="text"></p>
+<h2 id="按钮（Button）组件"><a href="#按钮（Button）组件" class="headerlink" title="按钮（Button）组件"></a>按钮（Button）组件</h2><p>Flutter提供了几种类型的按钮组件：<code>RaisedButton</code> <code>FloatingActionButton</code> <code>FlatButton</code> <code>IconButton</code> <code>PopupMenuButton</code>，下面用一段代码说明这几种按钮的用法：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'package:flutter/material.dart'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() =&gt; runApp(<span class="keyword">new</span> TuyaApp());</span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> WhyFarther &#123; harder, smarter, selfStarter, tradingCharter &#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TuyaApp</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> MaterialApp(</span><br><span class="line">        title: <span class="string">'Test'</span>,</span><br><span class="line">        home: <span class="keyword">new</span> Scaffold(</span><br><span class="line">            appBar: <span class="keyword">new</span> AppBar(</span><br><span class="line">                title: <span class="keyword">new</span> Text(<span class="string">'Button'</span>)</span><br><span class="line">            ),</span><br><span class="line">            body: <span class="keyword">new</span> Column(</span><br><span class="line">              children: &lt;Widget&gt;[</span><br><span class="line">                <span class="keyword">new</span> RaisedButton(</span><br><span class="line">                  child: <span class="keyword">new</span> Text(<span class="string">"Raised Button"</span>),</span><br><span class="line">                  onPressed: ()&#123;&#125;,</span><br><span class="line">                ),</span><br><span class="line">                <span class="keyword">new</span> FloatingActionButton(</span><br><span class="line">                  child: <span class="keyword">new</span> Icon(Icons.add),</span><br><span class="line">                  onPressed: ()&#123;&#125;,</span><br><span class="line">                ),</span><br><span class="line">                <span class="keyword">new</span> FlatButton(</span><br><span class="line">                    onPressed: ()&#123;&#125;,</span><br><span class="line">                    child: <span class="keyword">new</span> Text(<span class="string">"Flat Button"</span>)</span><br><span class="line">                ),</span><br><span class="line">                <span class="keyword">new</span> IconButton(</span><br><span class="line">                    icon: <span class="keyword">new</span> Icon(Icons.list),<span class="comment">//flutter提供了很多按钮图片</span></span><br><span class="line">                    onPressed: ()&#123;&#125;</span><br><span class="line">                ),</span><br><span class="line">                <span class="keyword">new</span> PopupMenuButton&lt;WhyFarther&gt;(</span><br><span class="line">                  onSelected: (WhyFarther result) &#123;&#125;,</span><br><span class="line">                  itemBuilder: (BuildContext context) =&gt; &lt;PopupMenuEntry&lt;WhyFarther&gt;&gt;[</span><br><span class="line">                    <span class="keyword">const</span> PopupMenuItem&lt;WhyFarther&gt;(</span><br><span class="line">                      value: WhyFarther.harder,</span><br><span class="line">                      child: <span class="keyword">const</span> Text(<span class="string">'第一个选项'</span>),</span><br><span class="line">                    ),</span><br><span class="line">                    <span class="keyword">const</span> PopupMenuItem&lt;WhyFarther&gt;(</span><br><span class="line">                      value: WhyFarther.smarter,</span><br><span class="line">                      child: <span class="keyword">const</span> Text(<span class="string">'第二个选项'</span>),</span><br><span class="line">                    ),</span><br><span class="line">                    <span class="keyword">const</span> PopupMenuItem&lt;WhyFarther&gt;(</span><br><span class="line">                      value: WhyFarther.selfStarter,</span><br><span class="line">                      child: <span class="keyword">const</span> Text(<span class="string">'第三个选项'</span>),</span><br><span class="line">                    ),</span><br><span class="line">                    <span class="keyword">const</span> PopupMenuItem&lt;WhyFarther&gt;(</span><br><span class="line">                      value: WhyFarther.tradingCharter,</span><br><span class="line">                      child: <span class="keyword">const</span> Text(<span class="string">'第四个选项'</span>),</span><br><span class="line">                    ),</span><br><span class="line">                  ],</span><br><span class="line">                )</span><br><span class="line">              ],</span><br><span class="line">            )</span><br><span class="line">        )</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行效果如下图所示：</p>
+<p><img src="./images/button.png" alt="text"></p>
+<h2 id="Dialog组件"><a href="#Dialog组件" class="headerlink" title="Dialog组件"></a>Dialog组件</h2><p>Flutter提供了两种类型的对话框：SimpleDialog和AlertDialog。SimpleDialog是一个可以显示附加的提示或操作的简单对话框，AlertDialog则是一个会中断用户操作的对话框，需要用户确认的对话框，下面用代码来说明其用法：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'package:flutter/material.dart'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() =&gt; runApp(<span class="keyword">new</span> TuyaApp());</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TuyaApp</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> MaterialApp(</span><br><span class="line">      title: <span class="string">'Test'</span>,</span><br><span class="line">      home: <span class="keyword">new</span> Scaffold(</span><br><span class="line">        appBar: <span class="keyword">new</span> AppBar(</span><br><span class="line">          title: <span class="keyword">new</span> Text(<span class="string">'Test'</span>)</span><br><span class="line">        ),</span><br><span class="line"><span class="comment">//        body: new MyAlertDialogView()</span></span><br><span class="line">        body: <span class="keyword">new</span> MySimpleDialogView(),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyAlertDialogView</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> RaisedButton(</span><br><span class="line">      child: <span class="keyword">new</span> Text(<span class="string">'显示AlertDialog'</span>),</span><br><span class="line">      onPressed: () &#123;</span><br><span class="line">        showDialog&lt;<span class="built_in">Null</span>&gt;(</span><br><span class="line">          context: context,</span><br><span class="line">          barrierDismissible: <span class="keyword">false</span>, <span class="comment">// 不能点击对话框外关闭对话框，必须点击按钮关闭</span></span><br><span class="line">          builder: (BuildContext context) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> AlertDialog(</span><br><span class="line">              title: <span class="keyword">new</span> Text(<span class="string">'提示'</span>),</span><br><span class="line">              content: <span class="keyword">new</span> Text(<span class="string">'微软重申Windows 7将在2020年1月到达支持终点，公司希望利用这个机会说服用户在最新更新发布之前升级到Windows 10。'</span>),</span><br><span class="line">              actions: &lt;Widget&gt;[</span><br><span class="line">                <span class="keyword">new</span> FlatButton(</span><br><span class="line">                  child: <span class="keyword">new</span> Text(<span class="string">'明白了'</span>),</span><br><span class="line">                  onPressed: () &#123;</span><br><span class="line">                    Navigator.of(context).pop();</span><br><span class="line">                  &#125;,</span><br><span class="line">                ),</span><br><span class="line">              ],</span><br><span class="line">            );</span><br><span class="line">          &#125;,</span><br><span class="line">        );</span><br><span class="line">      &#125;,</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MySimpleDialogView</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> RaisedButton(</span><br><span class="line">      child: <span class="keyword">new</span> Text(<span class="string">'显示SimpleDialog'</span>),</span><br><span class="line">      onPressed: () &#123;</span><br><span class="line">        showDialog(</span><br><span class="line">          context: context,</span><br><span class="line">          builder: (BuildContext ctx) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> SimpleDialog(</span><br><span class="line">              title: <span class="keyword">new</span> Text(<span class="string">'这是SimpleDialog'</span>),</span><br><span class="line">              children: &lt;Widget&gt;[</span><br><span class="line">                <span class="keyword">new</span> SimpleDialogOption(</span><br><span class="line">                  onPressed: () &#123; Navigator.pop(context); &#125;,</span><br><span class="line">                  child: <span class="keyword">const</span> Text(<span class="string">'确定'</span>),</span><br><span class="line">                ),</span><br><span class="line">                <span class="keyword">new</span> SimpleDialogOption(</span><br><span class="line">                  onPressed: () &#123; Navigator.pop(context); &#125;,</span><br><span class="line">                  child: <span class="keyword">const</span> Text(<span class="string">'取消'</span>),</span><br><span class="line">                ),</span><br><span class="line">              ],</span><br><span class="line">            );</span><br><span class="line">          &#125;</span><br><span class="line">        );</span><br><span class="line">      &#125;,</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的代码分别展示了SimpleDialog和AlertDialog的基本用法。需要注意的是，这里并没有直接将按钮和显示对话框的逻辑写到TuyaApp类中，而是分两个StatelessWidget来写的，如果你直接将按钮及显示对话框的逻辑写到TuyaApp的<code>build</code>方法里，是会报错的，具体报错信息为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Navigator operation requested with a context that does not include a Navigator.</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+<p>意思是导航操作需要一个不包含Navigator的上下文对象，而如果我们将showDialog的逻辑写到TuyaApp的<code>build</code>方法中时，使用的是MaterialApp的上下文对象，这个上下文对象是包含Navigator的，所以就会报错。</p>
+<p>运行效果如下图：</p>
+<p><img src="./images/simpleDialog.png" alt="text"></p>
+<p><img src="./images/alertDialog.png" alt="text"></p>
+<h2 id="Image组件"><a href="#Image组件" class="headerlink" title="Image组件"></a>Image组件</h2><p>Image组件用于显示一张图片，可以加载本地（项目中或手机存储中）或网络图片。</p>
+<h3 id="加载本地图片"><a href="#加载本地图片" class="headerlink" title="加载本地图片"></a>加载本地图片</h3><p>使用下面的方法加载一张项目中的图片：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Image.asset(path, width: <span class="number">20.0</span>, height: <span class="number">20.0</span>, fit: BoxFit.cover)</span><br></pre></td></tr></table></figure>
+<p>其中path是项目中的图片目录。</p>
+<p><strong>加载项目中的图片一定要注意编辑pubspec.yaml文件：</strong></p>
+<blockquote>
+<p>假设当前我们在跟<code>lib/</code>同级的目录下创建了<code>images/</code>目录，在<code>images/</code>目录下存放了若干图片供项目使用，那么一定要记得在项目根目录下（也是跟<code>images/</code>同级的目录）编辑pubspec.yaml文件，打开pubspec.yaml文件，默认情况下assets是被注释了的，这里我们要取消注释assets并添加images/目录下的每个图片的路径，如下图所示：</p>
+</blockquote>
+<p><img src="./images/imageAssets.png" alt="image">    </p>
+<p>在上图中我们配置了文件路径<code>images/a_dot_burr.png</code>，所以可以用下面的代码来加载图片了：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Image.asset(<span class="string">'images/a_dot_burr.png'</span>, width: <span class="number">20.0</span>, height: <span class="number">20.0</span>, fit: BoxFit.cover)</span><br></pre></td></tr></table></figure>
+<p><code>width</code>和<code>height</code>是图片长宽，为double类型，如果你传整型<code>20</code>则会报错。 如果要加载手机存储中的图片，使用下面的方法：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Image.file(path, width: <span class="number">20.0</span>, height: <span class="number">20.0</span>, fit: BoxFit.cover)</span><br></pre></td></tr></table></figure>
+<p>fit属性指定了图片显示的不同方式，有如下几个值：</p>
+<ul>
+<li>contain：尽可能大，同时仍然包含图片完全在目标容器内。 </li>
+<li>cover：尽可能小，同时仍然覆盖整个目标容器。 </li>
+<li>fill：通过拉伸图片的长宽比填充目标容器。 </li>
+<li>fitHeight：确保是否显示了图片的完整高度，而不管是否意图片高度溢出了目标容器。 </li>
+<li>fitWidth：确保是否显示了图片的完整宽度，而不管是否图片高度溢出目标容器。 </li>
+<li>none：对齐目标容器内的图片（默认情况下居中）并丢弃位于容器外的图片的任何部分。图片原始大小不会被调整。 </li>
+<li>scaleDown：对齐目标容器内的图片（默认情况下居中），如果必要的话，对图片进行缩放，以确保图片适合容器。这与contain的情况相同，否则它与没有一样。 </li>
+</ul>
+<h3 id="加载网络图片"><a href="#加载网络图片" class="headerlink" title="加载网络图片"></a>加载网络图片</h3><p>加载网络图片使用下面的方法：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Image.network(imgUrl, width: <span class="number">20.0</span>, height: <span class="number">20.0</span>, fit: BoxFit.cover)</span><br></pre></td></tr></table></figure>
+<h2 id="ListView组件"><a href="#ListView组件" class="headerlink" title="ListView组件"></a>ListView组件</h2><p>ListView组件用于显示一个列表，一个最简单的ListView可以用如下代码实现：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'package:flutter/material.dart'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  <span class="built_in">List</span>&lt;Widget&gt; items = <span class="keyword">new</span> <span class="built_in">List</span>();</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line">    items.add(<span class="keyword">new</span> Text(<span class="string">"List Item $i"</span>));</span><br><span class="line">  &#125;</span><br><span class="line">  runApp(<span class="keyword">new</span> MaterialApp(</span><br><span class="line">    title: <span class="string">"Text Demo"</span>,</span><br><span class="line">    home: <span class="keyword">new</span> Scaffold(</span><br><span class="line">      appBar: <span class="keyword">new</span> AppBar(</span><br><span class="line">        title: <span class="keyword">new</span> Text(<span class="string">"Text Demo"</span>),</span><br><span class="line">      ),</span><br><span class="line">      body: <span class="keyword">new</span> Center(</span><br><span class="line">          child: <span class="keyword">new</span> ListView(children: items)</span><br><span class="line">      ),</span><br><span class="line">    ),</span><br><span class="line">  ));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果如下图所示：</p>
+<p><img src="./images/listView.png" alt="listView"></p>
+<p>这样的ListView显示不是我们需要的，太难看，每个item没有边距而且没有分割线，所以我们用下面的代码改造一下：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'package:flutter/material.dart'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  <span class="comment">// 装有ListView中所有item的集合</span></span><br><span class="line">  <span class="built_in">List</span>&lt;Widget&gt; items = <span class="keyword">new</span> <span class="built_in">List</span>();</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> text = <span class="keyword">new</span> Text(<span class="string">"ListView Item $i"</span>);</span><br><span class="line">    <span class="comment">// Padding也是一个Widget，是一个有内边距的容器，可以装其他Widget</span></span><br><span class="line">    items.add(<span class="keyword">new</span> Padding(</span><br><span class="line">      <span class="comment">// 内边距设置为15.0，上下左右四边都是15.0</span></span><br><span class="line">      padding: <span class="keyword">const</span> EdgeInsets.all(<span class="number">15.0</span>),</span><br><span class="line">      <span class="comment">// Padding容器中装的是Text组件</span></span><br><span class="line">      child: text</span><br><span class="line">    ));</span><br><span class="line">  &#125;</span><br><span class="line">  runApp(<span class="keyword">new</span> MaterialApp(</span><br><span class="line">    title: <span class="string">"ListView"</span>,</span><br><span class="line">    home: <span class="keyword">new</span> Scaffold(</span><br><span class="line">      appBar: <span class="keyword">new</span> AppBar(</span><br><span class="line">        title: <span class="keyword">new</span> Text(<span class="string">"ListView"</span>),</span><br><span class="line">      ),</span><br><span class="line">      body: <span class="keyword">new</span> Center(</span><br><span class="line">        <span class="comment">// build是ListView提供的静态方法，用于创建ListView</span></span><br><span class="line">        child: <span class="keyword">new</span> ListView.builder(</span><br><span class="line">          <span class="comment">// itemCount是ListView的item个数，这里之所以是items.length * 2是因为将分割线也算进去了</span></span><br><span class="line">          itemCount: items.length * <span class="number">2</span>,</span><br><span class="line">          itemBuilder: (context, index) &#123;</span><br><span class="line">            <span class="comment">// 如果index为奇数，则返回分割线</span></span><br><span class="line">            <span class="keyword">if</span> (index.isOdd) &#123;</span><br><span class="line">              <span class="keyword">return</span> <span class="keyword">new</span> Divider(height: <span class="number">1.0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 这里index为偶数，为了根据下标取items中的元素，需要对index做取整</span></span><br><span class="line">            index = index ~/ <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">return</span> items[index];</span><br><span class="line">          &#125;,</span><br><span class="line">        )</span><br><span class="line">      )</span><br><span class="line">    ),</span><br><span class="line">  ));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="./images/listView2.png" alt="listView2"></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>关于Flutter的常用组件，我们就介绍到这，以上的示例代码可以直接运行在AndroidStudio或VSCode中看到效果。更多组件和用法可以在<a href="https://link.juejin.im/?target=https%3A%2F%2Fflutterchina.club%2Fwidgets%2F" target="_blank" rel="noopener">Flutter中文网</a>中查看。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Flutter/">Flutter</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/flutter/">flutter</a>
+  </div>
+
+</div>
+
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2019/01/03/one/"  title="Flutter简介">
+ <span>Flutter简介
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+<div id="authorInfo">
+	
+		<div class="author-img"></div>		
+	
+	<div class="social-info" class="clearfix">
+		
+		
+		<a href="https://github.com/hughcoder" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:849978368@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+
+	</div>
+</div>
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Android/" title="Android">Android<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Flutter/" title="Flutter">Flutter<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/java/" title="java">java<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react-native/" title="react-native">react-native<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/dart/" title="dart">dart<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/flutter/" title="flutter">flutter<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/javascript/" title="javascript">javascript<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/synchronized/" title="synchronized">synchronized<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/源码/" title="源码">源码<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架构模式/" title="架构模式">架构模式<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+		
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/hsihohuang/kiddochan" target="_blank" title="Kiddochan">Kiddochan</a> © 2019 
+		
+		<a href="/about" target="_blank" title="Hugh">Hugh</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'hughcoder';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
